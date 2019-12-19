@@ -1,0 +1,12 @@
+{% extends 'phonebook/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<h1>PHONE BOOK</h1>
+
+{% for person in persons %}
+<a href="{% url 'person' id=person.id %}"> <p>{{person.last_name}}, {{person.first_name}}</p> </a>
+{% endfor %}
+
+{% endblock %}

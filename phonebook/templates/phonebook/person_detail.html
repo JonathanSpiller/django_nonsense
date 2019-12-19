@@ -1,0 +1,14 @@
+{% extends 'phonebook/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<h1>PHONE BOOK</h1>
+
+
+<h1>{{person.first_name}} {{person.last_name}}</h1>
+<h2>{{person.phone_number}}</h2>
+
+<a href="{% url 'persons' %}"> Back to Person List</a>
+
+{% endblock %}
