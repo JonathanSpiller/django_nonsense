@@ -8,6 +8,19 @@ class Personality(models.Model):
     def __repr__(self):
         return f"Personality: {self.happiness} {self.mbti}"
 
+    def __str__(self):
+        if self.happiness > 8:
+            return "ANNOYING HAPPY"
+        elif self.happiness > 5:
+            return "HAPPY"
+        elif self.happiness > 3:
+            return "SAD"
+        else:
+            return "DEPRESSED"
+
+
+
+
 
 class Person(models.Model):
     first_name = models.CharField(max_length=30)

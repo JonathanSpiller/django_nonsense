@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect
 from . import models
 from . import forms
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def index(request):
     return render(request, "phonebook/index.html")
 
 
 def home(request, number=0):
+    messages.success(request, 'You managed to add a message!', extra_tags="text-success")
+
+    if number > 0:
+        messages.info(request, f"You passed the number: {number}", extra_tags="green")
+
     return render(request, "phonebook/home.html")
 
 
@@ -26,6 +34,7 @@ def person(request, id):
     return render(request, "phonebook/person_detail.html", {'person':person})
 
 
+@login_required
 def add_person(request):
 
     if request.method == 'POST':
